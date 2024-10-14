@@ -1,0 +1,40 @@
+Admin:
+● Login ( 2 factor authentication , OTP will be sent on email )
+● View Customer
+- view Customers (name & email)
+- details of the Customer Name,Adress,Phone number, transaction history
+● Fraudulent Customers
+- list of all the Fraudulent Customers & change the status
+● Generate Payment link
+- Create Link (amount & country)
+- a switch to exempt rules
+
+● Payment Link (filled by the Customer)
+- Enter personal details
+(name, Phone number, Billing Adress,Shipping Adress,cnic number)
+- Credit Card details
+(If All the rules are passed, Payment will be successfull, else not successfull)
+
+● Rules
+1: More than 3 different credit card details used for purchases.
+2: If the customer Ip adress,Mac address or email was flagged as fraudulent already in our system when he tried to make transactions in the past.
+3: If the customer email address is from an unusual domain
+4: Transaction frequency is not normal
+5: Billing address is not as shipping address
+6: Payment is made outside of the country set by the admin
+7: If the customer email address or cnic number is used with more than 3 credit cards for transactions in the past.
+8: If the customer is using a vpn to make transaction.
+9: The customer will have 24 hours to make payment via the link.
+
+Alogorithm used:
+Random Forest
+
+Dataset:
+Custom Dataset will be created 
+
+Technologies Used:
+
+Frontend :Html,Css,Javascript
+Backend:Python
+Database:Mysql Database
+Frameword :Django 

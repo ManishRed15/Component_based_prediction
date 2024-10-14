@@ -1,0 +1,143 @@
+{% extends 'base.html'%}
+{% block content%}
+
+
+
+
+{% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+<div style="background: url('/media/bg2.jpg');background-repeat:no-repeat;background-size: cover;height:1200px;">
+    <br>
+    <br>
+    
+
+
+
+    <div class="container" style="width:50%;background-color:indianred;"><br><br>
+        <h3 style="color:white;text-align: center;"><u>Credit Card Testing</u></h3>
+        <br>
+      <form action="/Generate_Payment_link/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+            <input type="text" name="P_id" value="{{id}}" class="form-control" hidden>
+        </div>
+        <br>
+            <div class="col-md-6">
+                <label for="inputEmail4" style="color:white;">Name:</label>
+                <input type="text" class="form-control" id="inputEmail4" onpaste="return false;" value="{{fullname}}" ondrop="return false;" placeholder="Full name" name="fullname">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" style="color:white;">Credit Card number:</label>
+                <input type="number" class="form-control" id="cardno"  pattern="[0-9]{16}" onpaste="return false;" ondrop="return false;" placeholder="Credit Card number" name="cardno">
+            </div>
+        </div>
+     <br>
+      <div class="row">
+            <div class="col-md-6">
+                <label for="inputEmail4" style="color:white;">Email Address:</label>
+
+
+
+                <input type="email" class="form-control" id="Email Address" placeholder="Email Address" value="{{email_id}}" onpaste="return false;" ondrop="return false;" name="Email_Address">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" style="color:white;">Phone Number:</label>
+                <input type="number" class="form-control" id="date" placeholder="Phone number" value="{{phonenumber}}" onpaste="return false;" ondrop="return false;" name="Phone_number">
+            </div>
+        </div>
+     <br>
+     <div class="row">
+            <div class="col-md-6">
+                <label for="inputEmail4" style="color:white;">CVV code:</label>
+                <input type="number" class="form-control" id="cvv" placeholder="CVV code" onpaste="return false;"  ondrop="return false;" name="cvv">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" style="color:white;">Expiry Date:</label>
+                <input type="date" class="form-control" id="date" placeholder="Gender" onpaste="return false;" ondrop="return false;" name="date">
+            </div>
+        </div>
+     <br>
+     <div class="row">
+            <div class="col-md-12">
+                <h3>Billing Address</h3>
+                <label for="inputEmail4" style="color:white;">Street Address:</label>
+                <input type="text" class="form-control" id="Street_address1"  onpaste="return false;" ondrop="return false;" value="{{Street_address1}}" placeholder="Street Address" name="Street_address1">
+            </div>
+        </div><br>
+         <div class="row">
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">Zipcode:</label>
+                <input type="text" class="form-control" id="Zipcode1"  onpaste="return false;" ondrop="return false;"value="{{Zipcode1}}" placeholder="Zipcode" name="Zipcode1" >
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">City:</label>
+                <input type="text" class="form-control" id="City1" onpaste="return false;" ondrop="return false;" placeholder="City" value="{{City1}}" name="City1">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">State:</label>
+                <input type="text" class="form-control" id="State1" onpaste="return false;" ondrop="return false;" placeholder="State" value="{{State1}}" name="State1">
+            </div>
+           
+            
+        </div>
+    <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Shipping Address</h3>
+                <label for="inputEmail4" style="color:white;">Street Address:</label>
+                <input type="text" class="form-control" id="Street_address2"  onpaste="return false;" ondrop="return false;" value="{{Street_address2}}"placeholder="Street Address" name="Street_address2">
+            </div>
+        </div><br>
+         <div class="row">
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">Zipcode:</label>
+                <input type="text" class="form-control" id="Zipcode2"  onpaste="return false;" ondrop="return false;" value="{{Zipcode2}}" placeholder="Zipcode" name="Zipcode2" >
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">City:</label>
+                <input type="text" class="form-control" id="City2" onpaste="return false;" ondrop="return false;" value="{{City2}}" placeholder="City" name="City2">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">State:</label>
+                <input type="text" class="form-control" id="State2" onpaste="return false;" ondrop="return false;" placeholder="State" value="{{State2}}" name="State2">
+            </div>
+
+            
+        </div>
+    <br>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <label for="inputEmail4" style="color:white;">Amount:</label>
+                <input type="number" class="form-control" id="Amount" value="{{Amount}}" onpaste="return false;" ondrop="return false;" placeholder="Amount" name="Amount">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" style="color:white;">Country:</label>
+                <input type="text" class="form-control" id="Country" onpaste="return false;" value="{{Country}}" ondrop="return false;" placeholder="Country" name="Country">
+            </div>
+            <div class="col-md-4">
+                
+                <input type="text" class="form-control" id="ip_address" value="{{Ip_address}}" onpaste="return false;" ondrop="return false;" placeholder="Ip Address" name="ip_address" hidden>
+            </div>
+        </div>
+    <br>
+        
+     <br>
+       <center> <button type="submit" class="btn btn-primary">Sign in</button></center>
+    <br>
+    </form>
+            
+        
+    </div>
+
+   </div>
+
+     {% endblock%}
+    

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags %}
+            <script>alert("{{ message }}")</script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<div style="background: url('/media/bg2.jpg');background-repeat:no-repeat;background-size: cover;height:700px;">
+    <br><br>
+
+    <div class="container" style="width:50%;background-color:crimson;">
+        <br><br>
+        <h3 style="color:white;text-align: center;"><u>Update Fraud Status</u></h3>
+        <br>
+        <form action="/Flag_update/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" name="P_id" value="{{ data.id }}" class="form-control" hidden>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label style="color:white;">Name:</label>
+                    <input type="text" class="form-control" value="{{ data.Name }}" placeholder="Full name" name="fullname">
+                </div>
+                <div class="col-md-6">
+                    <label style="color:white;">Phone Number:</label>
+                    <input type="number" class="form-control" placeholder="Phone number" value="{{ data.phonenumber }}" name="Phone_number">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label style="color:white;">Country:</label>
+                    <input type="text" class="form-control" value="{{ data.country }}" placeholder="Country" name="Country">
+                </div>
+                <div class="col-md-6">
+                    <label style="color:white;">Email Address:</label>
+                    <input type="email" class="form-control" value="{{ data.email_address }}" placeholder="Email Address" name="Email_Address">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label style="color:white;">Amount:</label>
+                    <input type="number" class="form-control" value="{{ data.Amount }}" placeholder="Amount" name="Amount">
+                </div>
+                <div class="col-md-6">
+                    <label style="color:white;">Change Status:</label>
+                    <select class="form-control" name="Flagged_Status">
+                        <option value="{{ data.Flagged_Status }}">{{ data.Flagged_Status }}</option>
+                        <option value="Flagged">Flagged</option>
+                        <option value="Not Flagged">Not Flagged</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <center><button type="submit" class="btn btn-primary">Update</button></center>
+            <br><br>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

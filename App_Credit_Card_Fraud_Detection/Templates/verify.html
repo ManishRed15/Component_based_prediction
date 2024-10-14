@@ -1,0 +1,50 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+
+
+
+{% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<div style="background: url('/media/bg2.jpg');background-repeat:no-repeat;background-size: cover;height:700px;">
+   <div class="container" style="margin-right:650px;"  >
+    <div class="row">
+      <div class="col-sm-9 col-md-5 col-lg-5 mx-auto" style="margin-right:650px;padding: 78px;">
+        <div class="card card-signin my-5">
+          <div class="card-body" style="background-color:transparent;padding:12px">
+            <hr class="my-4">
+            <h3 class="card-title text-center" style="color:black;text-align:center;">Enter Otp Sent To Your Email</h3>
+            <br>
+            <form class="form-signin" action="/verify/" method="POST">
+                {% csrf_token %}
+
+              <div class="form-label-group">
+               <label for="Username" style="color:black">Enter OTP</label>
+               <br>
+               <br>
+                <input type="number" id="otp" name="otp" class="form-control" maxlength="4" placeholder="OTP number" required="" autofocus>                
+              </div>
+              
+              <br>
+              <center><button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button></center>
+              <hr class="my-4">
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   
+</div>
+</div>
+
+     {% endblock%}
